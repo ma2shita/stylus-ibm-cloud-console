@@ -1,54 +1,32 @@
 /* ==UserStyle==
-@name           AWS Management Console for DEMO
-@namespace      github.com/ma2shita/stylus-aws-management-console
+@name           IBM Cloud Console for DEMO
+@namespace      github.com/ma2shita/stylus-ibm-cloud-console
 @version        1.0.1
-@description    Dynamic masking for AWS Management console with Stylus
+@description    Dynamic masking for IBM Cloud console with Stylus
 @author         Kohei "Max" MATSUSHITA
-@homepageURL    https://github.com/ma2shita/stylus-aws-management-console
+@homepageURL    https://github.com/ma2shita/stylus-ibm-cloud-console
 @license        MIT License
 ==/UserStyle== */
 
-@-moz-document domain("console.aws.amazon.com") {
-  #nav-usernameMenu{filter:blur(5px);}
-  #iam-sidebar > if-feature > div > div.iam-options > div > span:nth-child(2) > span.ng-binding.ng-scope {filter:blur(5px);}
-}
-
-@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/iot/home\\?region=.+#/settings") {
-  /* AWS IoT Core: Endpoint */
-  #spa div.copyIcon > div > div {filter:blur(4px);}
-}
-
-/* AWS Lambda */
-
-@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/lambda/home\\?region=.+#/functions") {
-  #lambda-listFunctions > awsui-table > div > div.awsui-table-container > table > tbody > tr > td:nth-child(2) > span > a {filter:blur(5px);} /* function list */
-  #lambda-listFunctions > awsui-table > div > div.awsui-table-container > table > tbody > tr:nth-child(1) > td:nth-child(2) > span > a {filter:blur(0);} /* 1st line */
-}
-
-@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/lambda/home\\?region=.+#/functions/.+") {
-  #app-designer > section > div > div > div > div > div > div > div > div:nth-child(3) > div > div > div:nth-child(2) > span > span:nth-child(2) {filter:blur(5px);} /* ARN */
-}
-
-/* Amazon CloudWatch Logs */
-
-@-moz-document regexp(".+") { /* Effecive to very large */
-  #awsui-expandable-section-0 > span > awsui-column-layout > div > span > div > div:nth-child(4) > div > div:nth-child(1) > div:nth-child(2){filter:blur(5px);} /* ARN */
-  span.logs__log-events-table__cell {filter:blur(5px);} /* log */
-  div.logs__events__json {filter:blur(5px);} /* log */
-  tr:nth-child(2) div.logs__events__json {filter:blur(0);} /* 2nd line */
-}
-
-@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/sns/v3/home\\?region=.+#/.+") {
-  /* Amazon SNS */
-  #create-sub-topic-arn {filter:blur(4px);}
-  #create-sub-destination:not(:placeholder-shown){filter:blur(4px);}
-
-  /* /topics */
-  #app div.awsui-util-spacing-v-s:nth-child(2) > div:nth-child(2) > div:nth-child(2) {filter:blur(5px);}
-  #topic-details-arn {filter:blur(5px);}
-
-  /* /subscriptions */
-  #app div.awsui-table-container > table > tbody td:nth-child(3) > span > span {filter:blur(5px);}
-  #subscription-details-arn {filter:blur(5px);}
-  #app div.awsui-util-spacing-v-s:nth-child(1) > div:nth-child(2) > div:nth-child(2) {filter:blur(5px);}
-}
+@-moz-document url-prefix("https://cloud.ibm.com/functions/details/action/") {
+  /* Cloud Functions */
+  #ow-namespace {filter:blur(5px);}
+  #ow-webaction--url {filter:blur(5px);}
+  #rest-api-url {filter:blur(5px);}
+  #curl-table > tbody > tr > td:nth-child(1) {filter:blur(5px);}
+  
+  }
+  
+  @-moz-document url-prefix("https://cloud.ibm.com/functions/") {
+  /* Cloud Functions */
+  #namespaceSwitcher > li.bx--dropdown-text.ow-dropdown-text.ow-dropdown-ellipse > span {filter:blur(5px);}
+  }
+  
+  @-moz-document url-prefix("https://dashboard.cloudantnosqldb.cloud.ibm.com/rc/account/crn") {
+  /* Cloudant Instances */
+  #tab-panel-1 > div > div.cldt-overview > div:nth-child(1) > div > section > div > div:nth-child(1) > div.bx--structured-list-td.cldt-overview__list-td-value {filter:blur(5px);} /* CRN */
+  #tab-panel-1 > div > div.cldt-overview > div:nth-child(1) > div > section > div > div:nth-child(3) > div.bx--structured-list-td.cldt-overview__list-td-value {filter:blur(5px);} /* External Endpoint */
+  #tab-panel-1 > div > div.cldt-overview > div:nth-child(1) > div > section > div > div:nth-child(4) > div.bx--structured-list-td.cldt-overview__list-td-value {filter:blur(5px);} /* External Endpoint (preferred) */
+  
+  
+  }
